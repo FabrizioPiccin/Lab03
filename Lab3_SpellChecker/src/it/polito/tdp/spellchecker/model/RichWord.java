@@ -8,6 +8,7 @@ public class RichWord {
 	public RichWord(String parola) {
 		super();
 		this.parola = parola;
+		corretta=false;
 	}
 
 	/**

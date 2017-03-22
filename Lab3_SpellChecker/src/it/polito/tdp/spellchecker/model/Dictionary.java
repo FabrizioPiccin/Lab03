@@ -18,13 +18,15 @@ public class Dictionary {
 	
 	public void loadDictionary( String language){
 		
+		dizionario.clear();
+		
 		try{
 			FileReader fr = new FileReader("rsc/"+language+".txt");
 			BufferedReader br = new BufferedReader(fr);
 			String word;
 			
 			while((word = br.readLine()) != null){
-				dizionario.add(word);
+				dizionario.add(word.toLowerCase());
 			}
 		}catch (IOException e){
 			System.out.println("Errore lettura file");			
@@ -34,6 +36,7 @@ public class Dictionary {
 	
 	public List<RichWord> spellCheckText( List<String> inputTextList){
 		
+		
 		List<RichWord> parole = new LinkedList<RichWord>();
 		
 		for (String s : inputTextList){
@@ -42,14 +45,17 @@ public class Dictionary {
 			if( dizionario.contains(s)){
 				r.setCorretta(true);		
 			}
-			else{
-				r.setCorretta(false);
-			}
-			
+
 			parole.add(r);
 			
 		}
 		return parole;
+	}
+
+	public void reset() {
+		// TODO Auto-generated method stub
+		dizionario.clear();
+		
 	}
 	
 
